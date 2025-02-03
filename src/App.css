@@ -1,0 +1,355 @@
+/* General Page Styling */
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle at top, #0a0f1a, #030712);
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Website Name Container */
+.website-name {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #00f6ff, #00ff99);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+  animation: fadeInHolo 2s ease-in-out;
+}
+
+/* Thin Holographic Line Under the Name */
+.website-name::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(0, 255, 255, 0.7), rgba(0, 255, 255, 0));
+  margin: 8px auto 0;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  animation: glowLine 2s infinite alternate;
+}
+
+/* Reflection Effect for the Name */
+.website-name::before {
+  content: attr(data-reflect);
+  position: absolute;
+  top: 3px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.1);
+  transform: scaleY(-1);
+  filter: blur(5px);
+}
+
+/* Animation Keyframes */
+@keyframes fadeInHolo {
+  from { opacity: 0; transform: translate(-50%, -20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes glowLine {
+  from { box-shadow: 0 0 10px rgba(0, 255, 255, 0.7); }
+  to { box-shadow: 0 0 20px rgba(0, 255, 255, 1); }
+}
+
+/* Subtle animated background grid for a futuristic effect */
+.background-grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.15;
+  z-index: 1;
+}
+
+/* Subtle glowing orbs */
+.orb {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.7), rgba(0, 255, 255, 0) 60%);
+  filter: blur(20px);
+  animation: orbMove 6s infinite alternate ease-in-out;
+}
+
+.orb.one { top: 10%; left: 15%; animation-delay: 0s; }
+.orb.two { top: 80%; left: 70%; animation-delay: 2s; }
+.orb.three { top: 50%; left: 50%; animation-delay: 1s; }
+
+/* Countdown Container */
+.construction-container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 50px;
+  border-radius: 18px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+  max-width: 650px;
+  width: 90%;
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 2s ease-in-out;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+/* Holographic Title */
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, rgba(0, 255, 255, 1), rgba(0, 255, 255, 0.3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowText 1.5s infinite alternate;
+}
+
+/* Subtitle */
+p {
+  font-size: 1.3rem;
+  margin: 15px 0;
+  opacity: 0.85;
+}
+
+/* Countdown Timer */
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Timer Boxes with Holographic Effects */
+.timer-box {
+  background: rgba(0, 255, 255, 0.15);
+  padding: 20px;
+  border-radius: 15px;
+  width: 100px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.timer-box:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+}
+
+.timer-box span {
+  font-size: 2.8rem;
+  font-weight: bold;
+  display: block;
+  color: #00f6ff;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+}
+
+.timer-box p {
+  font-size: 1rem;
+  margin-top: 5px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Scanning Effect Inside Timer Boxes */
+.timer-box::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background: rgba(0, 255, 255, 0.8);
+  top: 0;
+  left: 0;
+  animation: scanning 2s infinite linear;
+}
+
+@keyframes scanning {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Social Share Buttons */
+.social-share {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.social-share button {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(255, 75, 50, 0.5);
+}
+
+.social-share button:hover {
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 75, 50, 0.8);
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowText {
+  from { text-shadow: 0 0 20px rgba(0, 255, 255, 0.8); }
+  to { text-shadow: 0 0 30px rgba(0, 255, 255, 1); }
+}
+
+@keyframes orbMove {
+  from { transform: translateY(0); opacity: 0.6; }
+  to { transform: translateY(-20px); opacity: 1; }
+}
+/* Responsive Design for Mobile Devices */
+@media (max-width: 768px) {
+  /* General Page Styling */
+  .App {
+    padding: 20px;
+  }
+
+  /* Website Name */
+  .website-name {
+    font-size: 1.5rem; /* Smaller font size for mobile */
+  }
+
+  /* Holographic Line Under the Name */
+  .website-name::after {
+    width: 80px;
+  }
+
+  /* Countdown Container */
+  .construction-container {
+    padding: 30px;
+    max-width: 100%;
+  }
+
+  /* Holographic Title */
+  h1 {
+    font-size: 2rem; /* Smaller title size */
+  }
+
+  /* Subtitle */
+  p {
+    font-size: 1rem; /* Adjusted font size for paragraphs */
+  }
+
+  /* Countdown Timer */
+  .countdown-timer {
+    flex-direction:row;
+    gap: 10px;
+  }
+
+  /* Timer Boxes */
+  .timer-box {
+    width: 80px; /* Smaller timer boxes */
+    padding: 15px;
+  }
+
+  /* Social Share Buttons */
+  .social-share button {
+    font-size: 0.9rem; /* Smaller buttons */
+    padding: 10px 20px;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+  .website-name {
+    font-size: 1.2rem; /* Further reduce font size for very small screens */
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  .construction-container {
+    padding: 20px;
+  }
+
+  .timer-box {
+    width: 70px; /* Further reduce timer box width */
+    padding: 12px;
+  }
+
+  .social-share button {
+    font-size: 0.8rem; /* Even smaller font size for buttons */
+    padding: 8px 18px;
+  }
+
+  .countdown-timer {
+    gap: 8px;
+  }
+}
+
+
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 768px) {
+  /* Countdown Timer */
+  .countdown-timer {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  /* Timer Boxes */
+  .timer-box {
+    width: 80px;
+    padding: 15px;
+  }
+
+  /* Timer Numbers */
+  .timer-box span {
+    font-size: 2rem; /* Smaller font size for numbers on mobile */
+  }
+
+  /* Timer Text (Days, Hours, Minutes, Seconds) */
+  .timer-box p {
+    font-size: 0.9rem; /* Smaller font size for text labels */
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+  .timer-box {
+    width: 70px;
+    padding: 12px;
+  }
+
+  /* Timer Numbers */
+  .timer-box span {
+    font-size: 1.8rem; /* Further reduce font size for numbers on very small screens */
+  }
+
+  /* Timer Text (Days, Hours, Minutes, Seconds) */
+  .timer-box p {
+    font-size: 0.8rem; /* Further reduce font size for text labels */
+  }
+}
